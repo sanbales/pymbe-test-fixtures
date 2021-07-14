@@ -36,7 +36,7 @@ def download_all_projects(url: str, port: int = 9000):
         client.selected_project = project_id
         try:
             model = pm.Model.load(
-                elements=client._get_elements_from_server(),
+                elements=client.self._retrieve_data(client.elements_url),
                 name=project_name,
                 source=client.elements_url,
             )
