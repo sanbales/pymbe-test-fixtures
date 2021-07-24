@@ -20,10 +20,7 @@ def get_latest_by_name(client: pm.SysML2ClientWidget):
             projects[project_name] = project_ids[0]
             continue
         name = project_name
-        created_map = [
-            (client.projects[project_id]["created"], project_id)
-            for project_id in project_ids
-        ]
+        created_map = [(client.projects[project_id]["created"], project_id) for project_id in project_ids]
         projects[project_name] = sorted(created_map)[-1][1]
     return dict(projects)
 
