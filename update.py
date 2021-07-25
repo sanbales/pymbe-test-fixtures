@@ -47,4 +47,4 @@ def download_all_projects(url: str, port: int = 9000):
 
 
 if __name__ == "__main__":
-    download_all_projects(url="http://sysml2.intercax.com")
+    download_all_projects(url="http://sysml2-sst.intercax.com")
