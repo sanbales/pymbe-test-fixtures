@@ -19,7 +19,6 @@ def get_latest_by_name(client: pm.SysML2ClientWidget):
         if len(project_ids) == 1:
             projects[project_name] = project_ids[0]
             continue
-        name = project_name
         created_map = [
             (client.projects[project_id]["created"], project_id) for project_id in project_ids
         ]
@@ -35,15 +34,15 @@ def download_all_projects(url: str, port: int = 9000):
         client.selected_project = project_id
         try:
             model = pm.Model.load(
-                elements=client.self._retrieve_data(client.elements_url),
+                elements=client._retrieve_data(client.elements_url),
                 name=project_name,
                 source=client.elements_url,
             )
             print(f" > Saving {project_name}")
             model.save_to_file(FIXTURES / f"{project_name}.json")
             print(f" > Successfully Downloaded '{project_name}'")
-        except Exception as exc:
-            warn(f">>> Could not download '{project_name}'")
+        except Exception as exc:  # pylint: disable=broad-except
+            warn(f">>> Could not download '{project_name}'\n{exc}")
 
 
 if __name__ == "__main__":
