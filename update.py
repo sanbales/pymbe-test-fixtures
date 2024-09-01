@@ -5,7 +5,6 @@ from warnings import warn
 import pymbe.api as pm
 from pymbe.client import APIClient
 
-
 PYMBE_ROOT = Path(pm.__file__).parent
 FIXTURES = (PYMBE_ROOT / "../../tests/fixtures").resolve()
 
