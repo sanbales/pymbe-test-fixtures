@@ -20,7 +20,8 @@ def get_latest_by_name(client: APIClient):
             projects[project_name] = project_ids[0]
             continue
         created_map = [
-            (client.projects[project_id]["created"], project_id) for project_id in project_ids
+            (client.projects[project_id]["created"], project_id)
+            for project_id in project_ids
         ]
         projects[project_name] = sorted(created_map)[-1][1]
     return dict(projects)
